@@ -37,16 +37,20 @@
 
   /* Step 6: 53.75px → 76.29px */
   --step-6: clamp(3.36rem, calc(2.87rem + 2.45vw), 4.77rem);
+
+  --background-color: #000000;
 }
 body,
 html {
-  background: #000000;
+  background: var(--background-color);
   color: white;
   scroll-behavior: smooth;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
-
+svg {
+  color: #b1b1b1;
+}
 .side-top {
   backdrop-filter: blur(45px);
   width: 100%;
@@ -185,8 +189,9 @@ header {
   transition: all 0.3s ease-in-out;
 }
 .card img:hover {
-  width: 525px;
+  transform: scale(1.075);
   box-shadow: 0 0 10px #494949;
+  z-index: -1;
 }
 
 .contact {
@@ -204,6 +209,7 @@ header {
   justify-content: space-evenly;
   align-items: center;
   color: #b1b1b1;
+  text-align: center;
 }
 .contact-info {
   display: flex;
@@ -228,7 +234,36 @@ header {
 .contact-info li a:hover {
   color: #ddd;
 }
+
+@media screen and (max-width: 1000px) {
+  .nav ul li img {
+    height: 3.15rem;
+    width: 4.15rem;
+  }
+  .project {
+    flex-direction: column;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .about {
+    font-size: var(--step-1);
+  }
+  .contact p {
+    font-size: var(--step-3);
+  }
+  .contact-info {
+    font-size: var(--step-2);
+  }
+  .nav ul {
+    font-size: var(--step-2);
+  }
+}
 @media only screen and (max-width: 700px) {
+  .nav {
+    transform: translate(0px, 74vh);
+  }
   .project {
     height: 100vh;
     width: 85vw;
@@ -252,5 +287,24 @@ header {
   }
   .contact p {
     font-size: var(--step-0);
+  }
+  .side-top {
+    height: 34px;
+  }
+  .side-bottom {
+    height: 34px;
+  }
+  .nav ul {
+    gap: 0;
+    padding: 0;
+  }
+  .about {
+    height: 100vh;
+    width: 80vw;
+  }
+  .contact-info li a {
+    gap: 2px;
+    display: flex;
+    justify-content: space-between;
   }
 }
